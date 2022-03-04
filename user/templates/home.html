@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+    </style>
+</head>
+
+{% block content %}
+
+<body>
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                {% if request.user.role == "teacher" or request.user.is_stuff %}
+                <h2 style="text-align:center">Teacher Profile</h2>
+                {% else %}
+                <h2 style="text-align:center">Student Profile</h2>
+                {% endif %}
+                <h3 id="form-title">{{request.user.user_name}}</h3>
+                <p>email:{{ request.user.email}}</p>
+                <p>username:{{ request.user.user_name}}</p>
+                <p>Date of Joining:{{ request.user.start_date}}</p>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock content %}

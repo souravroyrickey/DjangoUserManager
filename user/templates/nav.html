@@ -1,0 +1,110 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .topnav {
+            overflow: hidden;
+            background-color: #74cfbf;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #f7ba5b;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #f7ba5b;
+            color: white;
+        }
+
+        .hello {
+            float: right;
+            margin-right: 20px;
+            color: #f2f2f2;
+            font-size: 17px;
+            text-align: center;
+            padding: 14px 16px;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #f7ba5b;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<ul id="menu" class="topnav">
+    <a class="active" href="#Curriculam">Curriculam</a>
+    {% if request.user.role == "teacher" or request.user.is_stuff %}
+    <a href="#Students">Students</a>
+    {% endif %}
+    <a href="#Result">Result</a>
+    <a href="#About">Profile</a>
+    <a href="{% url 'logout' %}">Logout</a>
+    <span class="hello">Hello, {{request.user}}</span>
+</ul>
